@@ -15,7 +15,7 @@ then place scripts to run i3 or other xorg wm in the $HOME/.config/zdm/ folder
 and if you use wayland place scripts to run wayland wm in $HOME/.config/zdm/way/
 
 # zxdm.py
-a python script that does the same as zdm.py but without wayland option
+a python script that does the same as zdm.py but without wayland option and wayland cli flags
 # zxdm
 a shell script that lists files in $HOME/.config/zdm/
 then runs with with sx <https://github.com/Earnestly/sx>
