@@ -2,8 +2,6 @@
 import os
 import argparse
 #import subprocess
-home = os.path.expanduser("~")
-path = (home + "/.config/zwm/") 
 ver=0.9
 
 def listwm(wmarray):
@@ -31,8 +29,12 @@ def sxint(startwm, path, wmarray):
     sx(x, path)
 
 def main():
-    wmarray = os.listdir(path)
-    wmarray.remove("zwm.conf")
+    #wmarray = os.listdir(path)
+    wmarray = []
+    for entry in os.scandir(path):
+        if entry.is_file():
+            wmarray.append(entry.name) 
+    if 'zwm.conf' in wmarray: wmarray.remove("zwm.conf")
     listwm(wmarray)
     print("[q] quit")
     startwm = input("launch:")
@@ -58,13 +60,20 @@ def main():
 #except KeyboardInterrupt:
 #    print("\nKEYBOARDINTERRUPT")
 def parse_arguments():
-    helpmenu = f"a cli display manager using scripts in {path} as options"
+    helpmenu = f"a cli display manager using scripts in $HOME/.config/zwm/ as options"
     parser = argparse.ArgumentParser(description = helpmenu)
     parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
+    parser.add_argument("-i", "--inputdir", type=str, help = "input custom dir")
     args = parser.parse_args()
     if args.version:
         print(f"zwm-{ver}")
         exit()
+    global path
+    if args.inputdir == None:
+        home = os.path.expanduser("~")
+        path = (home + "/.config/zwm/") 
+    else:
+        path = args.inputdir
 
 if __name__ == "__main__":
     parse_arguments()
