@@ -1,11 +1,5 @@
 import os
 
-def grabwm(wmarray, targnum):
-    x = 0
-    for wm in wmarray:
-        x += 1
-        if x == targnum and wm != 'zwm.conf':
-            return(wm)
 
 def listwm(wmarray):
     x = 0
@@ -21,7 +15,7 @@ def sxstr(startwm, path):
     print(f"run 'exec sx sh {path}{startwm} in shell'")
 
 def sxint(startwm, path, wmarray):
-    x = grabwm(wmarray, startwm)
+    x = wmarray[startwm - 1]
     print(f"run 'exec sx sh {path}{x} in shell'")
 
 
