@@ -41,10 +41,13 @@ def main():
     wmarray = xwmarray + ywmarray
     wmprint = xwmprint + ywmprint
     if typeindicator:
-        listwm(wmprint)
+        y = wmprint
     else:
-        listwm(wmarray)
-
+        y = wmarray
+    grabwm(wmarray, ywmarray, y)
+    
+def grabwm(wmarray, ywmarray, wmprint):
+    listwm(wmprint)
     print("[q] quit")
     startwm = input("launch:")
     try:
@@ -52,11 +55,11 @@ def main():
         x = len(wmarray)
         if val > x:
             print("user output to big")
-            main()
+            grabwm(wmarray, ywmarray, wmprint)
             exit()
         elif val < 1:
             print("user input to small")
-            main()
+            grabwm(wmarray, ywmarray, wmprint)
             exit()
         x = wmarray[val - 1]
         if x in ywmarray:
@@ -67,6 +70,7 @@ def main():
         if startwm == "q":
             quit()
         sx(startwm, path)
+
 def parse_arguments():
     helpmenu = f"a cli display manager using scripts in $HOME/.config/zdm/ (for xorg wm) and $HOME/.config/zdm/way/ (for wayland wm) as options"
     parser = argparse.ArgumentParser(description = helpmenu)
