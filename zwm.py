@@ -55,4 +55,7 @@ def main():
 #except KeyboardInterrupt:
 #    print("\nKEYBOARDINTERRUPT")
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("(Ctrl-C)")
