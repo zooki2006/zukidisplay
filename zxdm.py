@@ -8,9 +8,6 @@ def listwm(wmarray):
     x = 0
     for wm in wmarray:
         x += 1
-        #if wm == 'zwm.conf':
-        #    print('')
-        #else:
         print(f"[{x}] {wm} ", end = ' ')
 
 def sx(startwm, path):
