@@ -14,22 +14,12 @@ def listwm(wmarray):
         print(f"[{x}] {wm} ", end = ' ')
 
 def sx(startwm, path):
-    x = f"sx sh {path}{startwm}"
+    print(f"run 'exec {xorg} sh {path}{startwm} in shell'")
+    x = f"{xorg} sh {path}{startwm}"
     print(x)
     os.system(x)
 
-
-def sxstr(startwm, path):
-    print(f"run 'exec sx sh {path}{startwm} in shell'")
-    sx(startwm, path)
-
-def sxint(startwm, path, wmarray):
-    x = wmarray[startwm - 1]
-    print(f"run 'exec sx sh {path}{x} in shell'")
-    sx(x, path)
-
 def main():
-    #wmarray = os.listdir(path)
     wmarray = []
     for entry in os.scandir(path):
         if entry.is_file():
@@ -49,21 +39,28 @@ def main():
             print("user input to small")
             main()
             exit()
-        sxint(val, path, wmarray)
+        x = wmarray[val - 1]
+        sx(x, path)
     except ValueError:
         if startwm == "q":
             quit()
-        sxstr(startwm, path)
+        sx(startwm, path)
 def parse_arguments():
     helpmenu = f"a cli display manager using scripts in $HOME/.config/zwm/ as options"
     parser = argparse.ArgumentParser(description = helpmenu)
     parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
     parser.add_argument("-i", "--inputdir", type=str, help = "input custom dir")
+    parser.add_argument("-x", "--xinit", help = "use xinit over sx", action="store_true")
     args = parser.parse_args()
     if args.version:
         print(f"zwm-{ver}")
         exit()
     global path
+    global xorg
+    if args.xinit:
+        xorg = "xinit"
+    else:
+        xorg = "sx"
     if args.inputdir == None:
         home = os.path.expanduser("~")
         path = (home + "/.config/zwm/") 
