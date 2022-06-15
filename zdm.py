@@ -20,6 +20,10 @@ def sx(startwm, path):
     print(x)
     os.system(x)
 
+def makedir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 def main():
     xwmarray = []
     ywmarray = []
@@ -84,6 +88,7 @@ def parse_arguments():
         path = (home + "/.config/zdm/") 
     else:
         path = args.inputdir
+    makedir(path)
     typeindicator = args.typeindicator
     if args.xinit:
         xorg = "xinit"
@@ -93,6 +98,7 @@ def parse_arguments():
         waypath = (f"{path}way/")
     else:
         waypath = args.inputwaydir
+    makedir(waypath)
 
 
 if __name__ == "__main__":
