@@ -33,8 +33,8 @@ def main():
     wmarray = []
     for entry in os.scandir(path):
         if entry.is_file():
-            wmarray.append(entry.name) 
-    if 'zwm.conf' in wmarray: wmarray.remove("zwm.conf")
+            if enty.name != "zwm.conf":
+                wmarray.append(entry.name) 
     listwm(wmarray)
     print("[q] quit")
     startwm = input("launch:")
