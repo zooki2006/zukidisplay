@@ -16,7 +16,7 @@ def way(startwm, waypath):
     os.system(y)
 
 def sx(startwm, path):
-    x = f"sx sh {path}{startwm}"
+    x = f"{xorg} sh {path}{startwm}"
     print(x)
     os.system(x)
 
@@ -86,6 +86,7 @@ def parse_arguments():
     parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
     parser.add_argument("-i", "--inputdir", type=str, help = "input custom dir")
     parser.add_argument("-t", "--typeindicator", help = "display session type (x) for xorg (w) for wayland ", action="store_true")
+    parser.add_argument("-x", "--xinit", help = "use xinit over sx", action="store_true")
     args = parser.parse_args()
     if args.version:
         print(f"zdm-{ver}")
@@ -93,12 +94,17 @@ def parse_arguments():
     global path
     global waypath
     global typeindicator
+    global xorg
     if args.inputdir == None:
         home = os.path.expanduser("~")
         path = (home + "/.config/zdm/") 
     else:
         path = args.inputdir
     typeindicator = args.typeindicator
+    if args.xinit:
+        xorg = "xinit"
+    else:
+        xorg = "sx"
 
     waypath = (f"{path}way/")
 
