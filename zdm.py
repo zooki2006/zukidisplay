@@ -70,7 +70,7 @@ def main():
             way(x, waypath)
         else:
             #sxint(val, path, wmarray)
-            sxstr(startwm, path)
+            sxstr(x, path)
     except ValueError:
         if startwm == "q":
             quit()
