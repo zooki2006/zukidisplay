@@ -1,4 +1,4 @@
-# zuki display manager for window managers
+# zuki X display manager for window managers
 import os
 import argparse
 #import subprocess
