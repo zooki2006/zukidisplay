@@ -1,7 +1,10 @@
+# zuki display manager for window managers
 import os
+import argparse
 #import subprocess
 home = os.path.expanduser("~")
 path = (home + "/.config/zwm/") 
+ver=0.9
 
 def listwm(wmarray):
     x = 0
@@ -54,7 +57,17 @@ def main():
 #    main()
 #except KeyboardInterrupt:
 #    print("\nKEYBOARDINTERRUPT")
+def parse_arguments():
+    helpmenu = f"a cli display manager using scripts in {path} as options"
+    parser = argparse.ArgumentParser(description = helpmenu)
+    parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
+    args = parser.parse_args()
+    if args.version:
+        print(f"zwm-{ver}")
+        exit()
+
 if __name__ == "__main__":
+    parse_arguments()
     try:
         main()
     except KeyboardInterrupt:
