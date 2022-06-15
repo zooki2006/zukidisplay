@@ -1,8 +1,8 @@
 #!/bin/sh
 
-wmdir=${wmdir:-"$HOME/.config/zwm"} # the dir of this display manager 
-wmconf=$wmdir/zwm.conf
-$wmconf # run zwm.conf
+wmdir=${wmdir:-"$HOME/.config/zdm"} # the dir of this display manager 
+wmconf=$wmdir/zdm.conf
+$wmconf # run zdm.conf
 autochmod=${autochmod:-"false"} # disable autochmod to make wm scripts to run
 
 
@@ -60,7 +60,7 @@ wait "$pid"
 
 
 
-listwm=$(ls -1 $wmdir | grep -v "zwm.conf")
+listwm=$(ls -1 $wmdir | grep -v "zdm.conf")
 tty=$(tty | grep "tty")
 #echo "$listwm"
 
