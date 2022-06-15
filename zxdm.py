@@ -16,11 +16,15 @@ def sx(startwm, path):
     print(x)
     os.system(x)
 
+def makedir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 def main():
     wmarray = []
     for entry in os.scandir(path):
         if entry.is_file():
-            if enty.name != "zwm.conf":
+            if entry.name != "zdm.conf":
                 wmarray.append(entry.name) 
     listwm(wmarray)
     print("[q] quit")
@@ -43,14 +47,14 @@ def main():
             quit()
         sx(startwm, path)
 def parse_arguments():
-    helpmenu = f"a cli display manager using scripts in $HOME/.config/zwm/ as options"
+    helpmenu = f"a cli display manager using scripts in $HOME/.config/zdm/ as options"
     parser = argparse.ArgumentParser(description = helpmenu)
     parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
     parser.add_argument("-i", "--inputdir", type=str, help = "input custom dir")
     parser.add_argument("-x", "--xinit", help = "use xinit over sx", action="store_true")
     args = parser.parse_args()
     if args.version:
-        print(f"zwm-{ver}")
+        print(f"zxdm-{ver}")
         exit()
     global path
     global xorg
@@ -60,7 +64,7 @@ def parse_arguments():
         xorg = "sx"
     if args.inputdir == None:
         home = os.path.expanduser("~")
-        path = (home + "/.config/zwm/") 
+        path = (home + "/.config/zdm/") 
     else:
         path = args.inputdir
 
