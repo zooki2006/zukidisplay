@@ -65,7 +65,12 @@ def main():
             print("user input to small")
             main()
             exit()
-        sxint(val, path, wmarray)
+        x = wmarray[val - 1]
+        if x in ywmarray:
+            way(x, waypath)
+        else:
+            #sxint(val, path, wmarray)
+            sxstr(startwm, path)
     except ValueError:
         if startwm == "q":
             quit()
