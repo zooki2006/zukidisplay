@@ -54,11 +54,6 @@ def main():
         if startwm == "q":
             quit()
         sxstr(startwm, path)
-    #sx(startwm, path)
-#try:
-#    main()
-#except KeyboardInterrupt:
-#    print("\nKEYBOARDINTERRUPT")
 def parse_arguments():
     helpmenu = f"a cli display manager using scripts in $HOME/.config/zwm/ as options"
     parser = argparse.ArgumentParser(description = helpmenu)
