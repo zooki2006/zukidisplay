@@ -2,7 +2,7 @@
 import os
 import argparse
 #import subprocess
-ver=0.9
+ver=1.0
 
 def listwm(wmarray):
     x = 0
