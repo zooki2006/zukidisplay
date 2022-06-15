@@ -1,7 +1,7 @@
 # zuki display manager for window managers
 import os
 import argparse
-ver=0.9
+ver=1.0
 
 def listwm(wmarray):
     x = 0
