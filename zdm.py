@@ -8,9 +8,6 @@ def listwm(wmarray):
     x = 0
     for wm in wmarray:
         x += 1
-        #if wm == 'zwm.conf':
-        #    print('')
-        #else:
         print(f"[{x}] {wm} ", end = ' ')
 
 def way(startwm, waypath):
@@ -41,15 +38,13 @@ def main():
     xwmprint = []
     for entry in os.scandir(path):
         if entry.is_file():
-            if entry.name != "zwm.conf":
+            if entry.name != "zdm.conf":
                 xwmarray.append(entry.name) 
                 xwmprint.append(f"(x){entry.name}") 
     for entry in os.scandir(waypath):
         if entry.is_file():
             ywmarray.append(entry.name) 
             ywmprint.append(f"(w){entry.name}") 
-    #if 'zwm.conf' in xwmarray: xwmarray.remove("zwm.conf")
-    #if '(x)zwm.conf' in xwmprint: xwmprint.remove("(x)zwm.conf")
     wmarray = xwmarray + ywmarray
     wmprint = xwmprint + ywmprint
     if typeindicator:
@@ -81,21 +76,21 @@ def main():
 #except KeyboardInterrupt:
 #    print("\nKEYBOARDINTERRUPT")
 def parse_arguments():
-    helpmenu = f"a cli display manager using scripts in $HOME/.config/zwm/ (for xorg wm) and $HOME/.config/zwm/way/ (for wayland wm) as options"
+    helpmenu = f"a cli display manager using scripts in $HOME/.config/zdm/ (for xorg wm) and $HOME/.config/zdm/way/ (for wayland wm) as options"
     parser = argparse.ArgumentParser(description = helpmenu)
     parser.add_argument("-v", "--version", help = "display ver num", action="store_true")
     parser.add_argument("-i", "--inputdir", type=str, help = "input custom dir")
     parser.add_argument("-t", "--typeindicator", help = "display session type (x) for xorg (w) for wayland ", action="store_true")
     args = parser.parse_args()
     if args.version:
-        print(f"zwm-{ver}")
+        print(f"zdm-{ver}")
         exit()
     global path
     global waypath
     global typeindicator
     if args.inputdir == None:
         home = os.path.expanduser("~")
-        path = (home + "/.config/zwm/") 
+        path = (home + "/.config/zdm/") 
     else:
         path = args.inputdir
     typeindicator = args.typeindicator
