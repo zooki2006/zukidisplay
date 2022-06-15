@@ -67,6 +67,7 @@ def parse_arguments():
         path = (home + "/.config/zdm/") 
     else:
         path = args.inputdir
+    makedir(path)
 
 if __name__ == "__main__":
     parse_arguments()
