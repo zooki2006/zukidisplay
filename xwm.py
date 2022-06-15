@@ -50,7 +50,9 @@ def main():
             quit()
         sxstr(startwm, path)
     #sx(startwm, path)
-try:
+#try:
+#    main()
+#except KeyboardInterrupt:
+#    print("\nKEYBOARDINTERRUPT")
+if __name__ == "__main__":
     main()
-except KeyboardInterrupt:
-    print("\nKEYBOARDINTERRUPT")
