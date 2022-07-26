@@ -36,8 +36,9 @@ def main():
                 xwmprint.append(f"(x){entry.name}") 
     for entry in os.scandir(waypath):
         if entry.is_file():
-            ywmarray.append(entry.name) 
-            ywmprint.append(f"(w){entry.name}") 
+            if entry.name != "Wsession":
+                ywmarray.append(entry.name) 
+                ywmprint.append(f"(w){entry.name}") 
     wmarray = xwmarray + ywmarray
     wmprint = xwmprint + ywmprint
     if typeindicator:
