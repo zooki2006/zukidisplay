@@ -31,7 +31,7 @@ def main():
     xwmprint = []
     for entry in os.scandir(path):
         if entry.is_file():
-            if entry.name != "zdm.conf":
+            if entry.name != "Xsession":
                 xwmarray.append(entry.name) 
                 xwmprint.append(f"(x){entry.name}") 
     for entry in os.scandir(waypath):
