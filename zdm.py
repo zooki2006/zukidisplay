@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # zuki display manager for window managers
 import os
 import argparse
